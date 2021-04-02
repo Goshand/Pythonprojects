@@ -1,0 +1,93 @@
+import math
+
+class Rectangle:
+        def __init__(self, length, width):
+                self.length = length
+                self.width = width
+
+        def getarea(self):
+                area = self.length * self.width
+                return area
+                #return length*width
+
+class Triangle:
+        def __init__(self, base, height):
+                self.base = base
+                self.height = height
+
+        def getarea(self):
+                return 0.5 * self.base * self.height
+
+class Circle:
+        def __init__(self, radius):
+                self.radius = radius
+
+        def getarea(self):
+                return math.pi * (self.radius * self.radius)
+
+class Square(Rectangle):
+        def __init__(self, side):
+                super().__init__(side, side)
+
+shapes = []
+overall = 0
+
+while True:
+        print("1. Add shape")
+        print("2. Get total area")
+        a=int(input("What do you want to do? "))
+
+        if a == 1:
+                print("1. Rectangle")
+                print("2. Circle")
+                print("3. Square")
+                print("4. Triangle")
+                s=int(input("What shape? "))
+                if s == 1:
+                        length=float(input("Length: "))
+                        width=float(input("Width: "))
+                        r=Rectangle(length, width)
+                        shapes += [r]
+                elif s == 2:
+                        radius=float(input("Radius: "))
+                        c=Circle(radius)
+                        shapes += [c]
+                elif s == 3:
+                        side=float(input("Side: "))
+                        sq=Square(side)
+                        shapes += [sq]
+                elif s == 4:
+                        base=float(input("Base: "))
+                        height=float(input("Height: "))
+                        t=Triangle(base, height)
+                        shapes += [t]
+                else:
+                        print("Wrong input")
+        elif a == 2:
+                for shape in shapes:
+                        overall += shape.getarea()
+                print("The overall area: " + str(overall))
+                break
+        else:
+                print("Wrong input")
+
+'''
+input("What shape do you want to add? ")
+print()
+print()
+
+s=Square(4)
+print(s.getarea())
+
+r=Rectangle(4,6)
+print(r.getarea())
+
+r2=Rectangle(3,7)
+print(r2.getarea())
+
+t=Triangle(4,6)
+print(t.getarea())
+
+c=Circle(4)
+print(c.getarea())
+'''
