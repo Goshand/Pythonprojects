@@ -1,0 +1,35 @@
+class Cell:
+        def __init__(self):
+                self.possible = [1, 2, 3, 4, 5, 6, 7, 8, 9] #list of integers
+                self.actual = -1 #integer
+
+        def set_value(self, actual):
+                self.actual = actual
+                self.possible = []
+
+        def remove_value(self, extra):
+                self.possible.remove(extra)
+
+class Row:
+        def __init__(self, cells):
+                self.cells = cells
+
+
+
+c=Cell()
+print(c.possible)
+
+print(c.actual)
+
+print()
+
+c.set_value(8)
+print(c.possible)
+
+print(c.actual)
+
+print()
+
+c2=Cell()
+c2.remove_value(c.actual)
+print(c2.possible)
